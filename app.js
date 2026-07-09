@@ -129,6 +129,23 @@ function renderElementBeast(element, size = "normal") {
   `;
 }
 
+function renderAcademyCrest() {
+  return `
+    <div class="academy-crest">
+      <div class="title-orbit-icon" aria-hidden="true">
+        <span class="icon-core">幻</span>
+        <span class="icon-blade blade-fire"></span>
+        <span class="icon-blade blade-ice"></span>
+        <span class="icon-blade blade-lightning"></span>
+        <span class="icon-blade blade-earth"></span>
+        <span class="icon-blade blade-wind"></span>
+        <span class="icon-blade blade-shadow"></span>
+      </div>
+      <h1 class="academy-title">元素幻影学院</h1>
+    </div>
+  `;
+}
+
 function renderBeastHall() {
   return `
     <div class="beast-hall" aria-hidden="true">
@@ -139,6 +156,28 @@ function renderBeastHall() {
       <div class="beast-grid">
         ${elementOrder.map((element) => renderElementBeast(element, "mini")).join("")}
       </div>
+    </div>
+  `;
+}
+
+function renderEnergyForge() {
+  return `
+    <div class="energy-forge" aria-hidden="true">
+      <span class="forge-ring ring-outer"></span>
+      <span class="forge-ring ring-middle"></span>
+      <span class="forge-ring ring-inner"></span>
+      <span class="forge-crystal crystal-fire"></span>
+      <span class="forge-crystal crystal-ice"></span>
+      <span class="forge-crystal crystal-lightning"></span>
+      <span class="forge-crystal crystal-earth"></span>
+      <span class="forge-crystal crystal-wind"></span>
+      <span class="forge-crystal crystal-shadow"></span>
+      <div class="portal-gate">
+        <span class="portal-star"></span>
+        <span class="portal-mist"></span>
+      </div>
+      <div class="flame-anim forge-flame"><span></span><span></span><span></span></div>
+      <div class="wave-anim forge-wave"><span></span><span></span></div>
     </div>
   `;
 }
@@ -154,17 +193,11 @@ function renderHeroTeam() {
 function renderStart() {
   app.removeAttribute("style");
   app.innerHTML = `
-    <section class="screen start-screen">
-      <div class="start-banner">
-        <div class="status-pill">36 个全科任务</div>
-        <h1>元素幻影学院</h1>
-        <p>六只原创元素神兽已经醒来，闯过语数英科和思维机关，为邓易安点亮最终荣耀徽章。</p>
-      </div>
+    <section class="screen start-screen premium-start">
+      ${renderAcademyCrest()}
+      <p class="mystery-copy">六道元素之门在云海中醒来，只有真正的观察力、勇气和智慧，才能让隐藏徽章现形。</p>
       ${renderBeastHall()}
-      <div class="subject-runes" aria-hidden="true">
-        <span>数</span><span>语</span><span>英</span><span>科</span><span>逻</span><span>空</span>
-      </div>
-      ${renderHeroTeam()}
+      ${renderEnergyForge()}
       <button class="primary-button" type="button" data-action="start">开始训练冒险</button>
     </section>
   `;
